@@ -1,87 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script defer src="js/app.js"></script>
-  <link rel="stylesheet" href="css/style.css">
-  <title>Connect Four</title>
-</head>
-<body>
-  <h1 class="game-title">CONNECT FOUR</h1>
-  <h2 class="turn-title">It is BLACK's Turn</h2>
-  <div class="board">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script defer src="js/app.js"></script>
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Connect Four</title>
+  </head>
+  <body>
+    <h1 class="game-title">CONNECT FOUR</h1>
+    <h2 id="message">It is BLACK's turn</h2>
+    <div class="structure">
+      <div class="leg"></div>
+    <div class="board">
+      <div class="psuedo-board"></div>
+      <div class="column">
+        <div class="above-board"></div>
+        <div class="square" id="0"></div>
+        <div class="square" id="1"></div>
+        <div class="square" id="2"></div>
+        <div class="square" id="3"></div>
+        <div class="square" id="4"></div>
+        <div class="square" id="5"></div>
+      </div>
+      <div class="column">
+        <div class="above-board"></div>
+        <div class="square" id="6"></div>
+        <div class="square" id="7"></div>
+        <div class="square" id="8"></div>
+        <div class="square" id="9"></div>
+        <div class="square" id="10"></div>
+        <div class="square" id="11"></div>
+      </div>
+      <div class="column">
+        <div class="above-board"></div>
+        <div class="square" id="12"></div>
+        <div class="square" id="13"></div>
+        <div class="square" id="14"></div>
+        <div class="square" id="15"></div>
+        <div class="square" id="16"></div>
+        <div class="square" id="17"></div>
+      </div>
+      <div class="column">
+        <div class="above-board"></div>
+        <div class="square" id="18"></div>
+        <div class="square" id="19"></div>
+        <div class="square" id="20"></div>
+        <div class="square" id="21"></div>
+        <div class="square" id="22"></div>
+        <div class="square" id="23"></div>
+      </div>
+      <div class="column">
+        <div class="above-board"></div>
+        <div class="square" id="24"></div>
+        <div class="square" id="25"></div>
+        <div class="square" id="26"></div>
+        <div class="square" id="27"></div>
+        <div class="square" id="28"></div>
+        <div class="square" id="29"></div>
+      </div>
+      <div class="column">
+        <div class="square" id="30"></div>
+        <div class="square" id="31"></div>
+        <div class="square" id="32"></div>
+        <div class="square" id="33"></div>
+        <div class="square" id="34"></div>
+        <div class="square" id="35"></div>
+      </div>
+      <div class="column">
+        <div class="above-board"></div>
+        <div class="square" id="36"></div>
+        <div class="square" id="37"></div>
+        <div class="square" id="38"></div>
+        <div class="square" id="39"></div>
+        <div class="square" id="40"></div>
+        <div class="square" id="41"></div>
+      </div>
+      <button class="reset">RESET</button>
+    </div>
     <div class="leg"></div>
-    <div class="column">
-      <div class="square" id="0"></div>
-      <div class="square" id="1"></div>
-      <div class="square" id="2"></div>
-      <div class="square" id="3"></div>
-      <div class="square" id="4"></div>
-      <div class="square" id="5"></div>  
     </div>
-    <div class="column">
-      <div class="square" id="6"></div>
-      <div class="square" id="7"></div>
-      <div class="square" id="8"></div>
-      <div class="square" id="9"></div>
-      <div class="square" id="10"></div>
-      <div class="square" id="11"></div>  
+    
+    <div class="status-section">
+      <p class="red-status">RED has # of turns remaining</p>
+      <p class="black-status">BLACK has # of turns remaining</p>
     </div>
-    <div class="column">
-      <div class="square" id="12"></div>
-      <div class="square" id="13"></div>
-      <div class="square" id="14"></div>
-      <div class="square" id="15"></div>
-      <div class="square" id="16"></div>
-      <div class="square" id="17"></div>  
-    </div>
-    <div class="column">
-      <div class="square" id="18"></div>
-      <div class="square" id="19"></div>
-      <div class="square" id="20"></div>
-      <div class="square" id="21"></div>
-      <div class="square" id="22"></div>
-      <div class="square" id="23"></div>  
-    </div>
-    <div class="column">
-      <div class="square" id="24"></div>
-      <div class="square" id="25"></div>
-      <div class="square" id="26"></div>
-      <div class="square" id="27"></div>
-      <div class="square" id="28"></div>
-      <div class="square" id="29"></div>  
-    </div>
-    <div class="column">
-      <div class="square" id="30"></div>
-      <div class="square" id="31"></div>
-      <div class="square" id="32"></div>
-      <div class="square" id="33"></div>
-      <div class="square" id="34"></div>
-      <div class="square" id="35"></div>  
-    </div>
-    <div class="column">
-      <div class="square" id="36"></div>
-      <div class="square" id="37"></div>
-      <div class="square" id="38"></div>
-      <div class="square" id="39"></div>
-      <div class="square" id="40"></div>
-      <div class="square" id="41"></div>  
-    </div>
-    <button class="reset">RESET</button>
-    <div class="leg"></div>
-  </div>
-  <div class="status-section">
-    <p class="red-status">RED has # of turns remaining</p>
-    <p class="black-status">BLACK has # of turns remaining</p>
-  </div>
-</body>
+  </body>
 </html>
-
 
 <!-- Connect Four -->
 <!--  board, -->
-  <!-- grid of squares 7 columns, 6 rows-->
-  <!-- leg elements -->
-
+<!-- grid of squares 7 columns, 6 rows-->
+<!-- leg elements -->
