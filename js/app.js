@@ -1,13 +1,78 @@
+/*--------- Cached Element References ---------*/
+const turnEl = document.querySelector(".turn-title")
+const boardEl = document.querySelector(".board") 
+const resetBtn = document.querySelector(".reset")
 /*----------------- Constants -----------------*/
 
 /*------------- Variables (state) -------------*/
+let playerTurn = 1
+let isWinner = null
+let gameMessage = "It's BLACK's turn!"
+let boardState = [
+  null, null, null, null, null, null, null,
+  null, null, null, null, null, null, null,
+  null, null, null, null, null, null, null,
+  null, null, null, null, null, null, null,
+  null, null, null, null, null, null, null,
+  null, null, null, null, null, null, null,
+]
 
-/*--------- Cached Element References ---------*/
+
 
 /*-------------- Event Listeners --------------*/
 
+boardEl.addEventListener("click", handleClick)
+resetBtn.addEventListener("click", clearAll)
 /*----------------- Functions -----------------*/
 
+clearAll()
+
+// A. click event tied to the board, identifies target id of square clicked
+// B. target id is used to update state array.
+
+function handleClick(e){
+  let targetId = parseInt(e.target.id)
+  if (isWinner === null && boardState[targetId] === null){
+    playerTurn === 1 ? boardState[targetId] = -1 : boardState[targetId] = 1
+    console.log(boardState)
+    playerTurn = playerTurn * 1
+  } 
+  render()
+  determineWinner()
+  handleMessage()
+}
+
+
+function clearAll(){
+  playerTurn = 1
+  isWinner = null
+  gameMessage = "It is BLACK's turn!"
+  boardState = [
+    null, null, null, null, null, null, null,
+    null, null, null, null, null, null, null,
+    null, null, null, null, null, null, null,
+    null, null, null, null, null, null, null,
+    null, null, null, null, null, null, null,
+    null, null, null, null, null, null, null,
+  ]
+
+  handleMessage()
+  render()  
+}
+
+
+function render(){
+
+}
+
+function handleMessage(){
+
+}
+
+
+function determineWinner(){
+
+}
 
 // 1. A connect four board, a reset button, and the number of moves remaining for each side is visible.
 // 2. Game will display which color’s turn it currently is.

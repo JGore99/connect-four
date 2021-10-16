@@ -17,3 +17,13 @@ html {
 :root {
   font-size: 62.5%;
 }
+
+.board {
+  border: 1px solid black;
+}
+
+.square {
+  border: 1px solid black;
+  height: 30px;
+  width: 30px;
+}
