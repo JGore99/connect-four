@@ -17,12 +17,13 @@ let isWinner = null
 let chipColor = "BLACK"
 let gameMessage = "It's BLACK's turn!"
 let boardState = [
-  null, null, null, null, null, null, null,
-  null, null, null, null, null, null, null,
-  null, null, null, null, null, null, null,
-  null, null, null, null, null, null, null,
-  null, null, null, null, null, null, null,
-  null, null, null, null, null, null, null
+  null, null, null, null, null, null, 
+  null, null, null, null, null, null, 
+  null, null, null, null, null, null, 
+  null, null, null, null, null, null, 
+  null, null, null, null, null, null,
+  null, null, null, null, null, null,
+  null, null, null, null, null, null
 ]
 
 /*-------------- Event Listeners --------------*/
@@ -45,7 +46,7 @@ function handleClick(e) {
     playerTurn = playerTurn * -1;
     playerTurn === 1 ? chipColor = "BLACK" : chipColor = "RED"
   }
-  // console.log(targetId)
+  console.log("space", targetId)
   render(columnId)
   determineWinner()
   handleMessages()

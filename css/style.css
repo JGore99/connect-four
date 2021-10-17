@@ -60,11 +60,11 @@ html {
 }
 
 .above-board {
-  background-color: grey;
+  /* background-color: grey; */
   border-radius: 50px;
-  height: 55px;
-  margin: 0 auto;
-  width: 55px;
+  height: 60px;
+  margin: 20 auto;
+  width: 60px;
 }
 .above-board:hover {
   background-color: rgb(240, 165, 165);
