@@ -1,13 +1,15 @@
 /*--------- Cached Element References ---------*/
+const topSquares = document.querySelectorAll(".above-board")
 const blackStatus = document.querySelector(".black-status")
 const boardEl = document.querySelector(".board")
 const boardSquares = document.querySelectorAll(".square")
-// const columnEl = document.querySelectorAll(".column")
 const messageEl = document.getElementById("message")
 const redStatus = document.querySelector(".red-status")
 const resetBtn = document.querySelector(".reset")
 const turnEl = document.querySelector(".turn-title")
 /*----------------- Constants -----------------*/
+const column0 = [topSquares[0], boardSquares[7], boardSquares[14], boardSquares[21], boardSquares[28], boardSquares[35]] 
+
 
 /*------------- Variables (state) -------------*/
 let playerTurn = 1
@@ -38,7 +40,7 @@ clearAll()
 // B. target id is used to update state array.
 
 function handleClick(e) {
-  let columnId = parseInt(e.target.parentNode.id.slice(1))
+  let targetColumn = parseInt(e.target.classList[1].slice(4))
   let targetId = parseInt(e.target.id);
   if (isWinner === null && boardState[targetId] === null) {
     playerTurn === 1 ? (boardState[targetId] = -1) : (boardState[targetId] = 1);
@@ -46,8 +48,10 @@ function handleClick(e) {
     playerTurn = playerTurn * -1;
     playerTurn === 1 ? chipColor = "BLACK" : chipColor = "RED"
   }
+  console.log("column", targetColumn)
   console.log("space", targetId)
-  render(columnId)
+  // console.log(boardState)
+  render(targetColumn)
   determineWinner()
   handleMessages()
 }
@@ -76,23 +80,30 @@ function clearAll() {
   render()
 }
 
-function render(columnId) {
-  if(columnId === 0){
-    
-  }
+function render() {
+  
   // if column x, check all children in said column for !== null.
   // if found, use index of that spot - 1, change color of that spot
   // if not found, change color of last spot in row.
-  console.log("column", columnId)
-  boardSquares.forEach((boardSquare, idx) => {
-    if (boardState[idx] === -1) {
-      boardSquare.innerText = "BL";
-    } else if (boardState[idx] === 1) {
-      boardSquare.innerText = "RD";
-    }
+  // console.log("column", columnId)
+  // console.log(boardState)
+  // boardSquares.forEach((boardSquare, idx) => {
+  //   if (boardState[idx] === -1) {
+  //     boardSquare.innerText = "BL";
+  //   } else if (boardState[idx] === 1) {
+  //     boardSquare.innerText = "RD";
+  //   }
+  // })
+  let checkBoardStatus = boardState.map((stateItem, index) => {
+    console.log("state item", index)
+    
+      return index  !== null
+    
   })
 
 }
+
+
 
 function handleMessages() {
   if(isWinner === null){
