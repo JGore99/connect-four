@@ -2,6 +2,7 @@
 const blackStatus = document.querySelector(".black-status")
 const boardEl = document.querySelector(".board")
 const boardSquares = document.querySelectorAll(".square")
+// const columnEl = document.querySelectorAll(".column")
 const messageEl = document.getElementById("message")
 const redStatus = document.querySelector(".red-status")
 const resetBtn = document.querySelector(".reset")
@@ -36,6 +37,7 @@ clearAll()
 // B. target id is used to update state array.
 
 function handleClick(e) {
+  let columnId = parseInt(e.target.parentNode.id.slice(1))
   let targetId = parseInt(e.target.id);
   if (isWinner === null && boardState[targetId] === null) {
     playerTurn === 1 ? (boardState[targetId] = -1) : (boardState[targetId] = 1);
@@ -43,8 +45,8 @@ function handleClick(e) {
     playerTurn = playerTurn * -1;
     playerTurn === 1 ? chipColor = "BLACK" : chipColor = "RED"
   }
-  console.log(playerTurn)
-  render()
+  // console.log(targetId)
+  render(columnId)
   determineWinner()
   handleMessages()
 }
@@ -73,7 +75,14 @@ function clearAll() {
   render()
 }
 
-function render() {
+function render(columnId) {
+  if(columnId === 0){
+    
+  }
+  // if column x, check all children in said column for !== null.
+  // if found, use index of that spot - 1, change color of that spot
+  // if not found, change color of last spot in row.
+  console.log("column", columnId)
   boardSquares.forEach((boardSquare, idx) => {
     if (boardState[idx] === -1) {
       boardSquare.innerText = "BL";
@@ -85,7 +94,6 @@ function render() {
 }
 
 function handleMessages() {
-  console.log(isWinner)
   if(isWinner === null){
     gameMessage = `It is ${chipColor}'s turn'`
   } else if (isWinner === "BLACK"){
@@ -105,7 +113,6 @@ function handleMessages() {
 
 function turnCounter(){
   playerTurn === 1 ? blackTurnsRemaining -- : redTurnsRemaining --
-  console.log(blackTurnsRemaining, redTurnsRemaining)
 }
 
 function determineWinner() {
