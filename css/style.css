@@ -106,8 +106,9 @@ html {
 
 .red {
   background-color: red;
+  color: red;
 }
 
-.yellow {
-  background-color: yellow;
+.black {
+  background-color: black;
 }

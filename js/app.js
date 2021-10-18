@@ -21,7 +21,7 @@ const turnEl = document.querySelector(".turn-title")
 let playerTurn = 1
 let redTurnsRemaining = 21
 let blackTurnsRemaining = 21
-let isWinner = null
+let isWinner = false
 let chipColor = "BLACK"
 let gameMessage = "It's BLACK's turn!"
 let boardState = [
@@ -47,25 +47,29 @@ clearAll()
 
 function handleClick(e) {
   // playerTurn = 1
-  let targetColumn = parseInt(e.target.classList[1].slice(4))
-  let targetId = parseInt(e.target.id);
-  if (isWinner === null) {
-    // playerTurn === 1 ? (boardState[targetId] = -1) : (boardState[targetId] = 1);
-    console.log("playerTurn before change", playerTurn)
-    findOpenSpace(targetColumn)
-    playerTurn = playerTurn * -1
-    console.log("playerTurn after change", playerTurn)
-    turnCounter()
-    playerTurn === 1 ? chipColor = "BLACK" : chipColor = "RED"
-  } else {
-    return
+  if (e.target.classList.value !== "board") {
+    console.log(e.target.classList)
+    let targetColumn = parseInt(e.target.classList[1].slice(4))
+    let targetId = parseInt(e.target.id);
+    
+    if (isWinner === false) {
+      // playerTurn === 1 ? (boardState[targetId] = -1) : (boardState[targetId] = 1);
+      console.log("playerTurn before change", playerTurn)
+      findOpenSpace(targetColumn)
+      playerTurn = playerTurn * -1
+      console.log("playerTurn after change", playerTurn)
+      turnCounter()
+      playerTurn === 1 ? chipColor = "BLACK" : chipColor = "RED"
+    } else {
+      return
+    }
+    console.log("column", targetColumn)
+    console.log("space", targetId)
+    // console.log(boardState)
+    render(targetColumn)
+    determineWinner()
+    handleMessages()
   }
-  console.log("column", targetColumn)
-  console.log("space", targetId)
-  // console.log(boardState)
-  render(targetColumn)
-  determineWinner()
-  handleMessages()
 }
 
 function clearAll() {
@@ -73,7 +77,7 @@ function clearAll() {
   redTurnsRemaining = 21
   blackTurnsRemaining = 21
   chipColor = "BLACK"
-  isWinner = null
+  isWinner = false
   gameMessage = "It is BLACK's turn!"
   boardState = [
     null, null, null, null, null, null, null,
@@ -85,7 +89,7 @@ function clearAll() {
   ]
   
   boardSquares.forEach((boardSquare) => {
-    boardSquare.innerText = "";
+    boardSquare.classList.remove("red", "black")
   })
 
   handleMessages()
@@ -93,7 +97,16 @@ function clearAll() {
 }
 
 function render() {
-  
+  console.log("bam")
+  if(isWinner === false){
+    boardSquares.forEach((square, idx) => {
+      if (boardState[idx] === -1){
+        square.classList.add("red")
+      } else if (boardState[idx] === 1){
+        square.classList.add("black")
+      }
+    })
+  }
   // if column x, check all children in said column for !== null.
   // if found, use index of that spot - 1, change color of that spot
   // if not found, change color of last spot in row.
@@ -110,7 +123,7 @@ function render() {
 }
 
 function handleMessages() {
-  if(isWinner === null){
+  if(isWinner === false){
     gameMessage = `It is ${chipColor}'s turn'`
   } else if (isWinner === "BLACK"){
     gameMessage = "Congrats! BLACK Won!"
@@ -133,29 +146,33 @@ function turnCounter(){
 
 function findOpenSpace(targetColumn){
   console.log(targetColumn)
-  let bottomColIndx = targetColumn + 35 //THIS!!!!
-  let bottomlessOne = targetColumn + 28 
-  let bottomlessTwo = targetColumn + 21
-  let bottomlessThree = targetColumn + 14
-  let bottomlessFour = targetColumn + 7
+  let bottomColIndx = targetColumn + 35
+  let bottomMinusOne = targetColumn + 28 
+  let bottomMinusTwo = targetColumn + 21
+  let bottomMinusThree = targetColumn + 14
+  let bottomMinusFour = targetColumn + 7
+  let bottomMinusFive = targetColumn
 
   if (boardState[bottomColIndx] === null){
     boardState[bottomColIndx] = playerTurn
     console.log("board state", boardState)
-  } else if (boardState[bottomlessOne] === null){
-    boardState[bottomlessOne] = playerTurn
+  } else if (boardState[bottomMinusOne] === null){
+    boardState[bottomMinusOne] = playerTurn
     console.log("board state", boardState)
-  } else if (boardState[bottomlessTwo] === null){
-    boardState[bottomlessTwo] = playerTurn
+  } else if (boardState[bottomMinusTwo] === null){
+    boardState[bottomMinusTwo] = playerTurn
     console.log("board state", boardState)  
-  } else if (boardState[bottomlessThree] === null){
-    boardState[bottomlessThree] = playerTurn
+  } else if (boardState[bottomMinusThree] === null){
+    boardState[bottomMinusThree] = playerTurn
     console.log("board state", boardState)   
-  } else if (boardState[bottomlessFour] === null){
-    boardState[bottomlessFour] = playerTurn
+  } else if (boardState[bottomMinusFour] === null){
+    boardState[bottomMinusFour] = playerTurn
+    console.log("board state", boardState) 
+  } else if (boardState[bottomMinusFive] === null){
+    boardState[bottomMinusFive] = playerTurn
     console.log("board state", boardState) 
   }
-  
+  render()
     // if (boardState[i] !== null || boardState[i] === 1 || boardState[i] === -1) 
   // if column 0 for loop starting at 0 +7 check every state value for != null. 
   // if found, grab -7, if not use last 
