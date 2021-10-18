@@ -18,7 +18,7 @@ const turnEl = document.querySelector(".turn-title")
 
 
 /*------------- Variables (state) -------------*/
-let playerTurn = null
+let playerTurn = 1
 let redTurnsRemaining = 21
 let blackTurnsRemaining = 21
 let isWinner = null
@@ -46,14 +46,16 @@ clearAll()
 // B. target id is used to update state array.
 
 function handleClick(e) {
-  playerTurn = 1
+  // playerTurn = 1
   let targetColumn = parseInt(e.target.classList[1].slice(4))
   let targetId = parseInt(e.target.id);
   if (isWinner === null) {
     // playerTurn === 1 ? (boardState[targetId] = -1) : (boardState[targetId] = 1);
+    console.log("playerTurn before change", playerTurn)
     findOpenSpace(targetColumn)
+    playerTurn = playerTurn * -1
+    console.log("playerTurn after change", playerTurn)
     turnCounter()
-    playerTurn = playerTurn * -1;
     playerTurn === 1 ? chipColor = "BLACK" : chipColor = "RED"
   } else {
     return
@@ -67,7 +69,7 @@ function handleClick(e) {
 }
 
 function clearAll() {
-  playerTurn = null
+  playerTurn = 1
   redTurnsRemaining = 21
   blackTurnsRemaining = 21
   chipColor = "BLACK"
@@ -130,20 +132,22 @@ function turnCounter(){
 }
 
 function findOpenSpace(targetColumn){
-
-  console.log("column id", targetColumn)
-  if(targetColumn === 0){
-    if (boardState[35] === null){
-      boardState[35] = playerTurn
-    } else {
-      for(let i = 0; i < 41; i = i + 7){
-        if (boardState[i] !== null){
-          boardState[i-7] = playerTurn
+  console.log(targetColumn)
+  let bottomColIndx = targetColumn + 35 //THIS!!!!
+  if (boardState[bottomColIndx] === null){
+    boardState[bottomColIndx] = playerTurn
+  } else {
+      console.log("playerTurn", playerTurn)
+      for(let i = targetColumn; i < 42; i += 7){
+        console.log("player turn in function", playerTurn)
+        let indexLessSeven = (i-7)
+        if (boardState[i] === null ){
+          boardState[indexLessSeven] = playerTurn
         }
       }
     }
-  }
-  console.log("board state", boardState)
+    console.log("board state", boardState)
+    // if (boardState[i] !== null || boardState[i] === 1 || boardState[i] === -1) 
   // if column 0 for loop starting at 0 +7 check every state value for != null. 
   // if found, grab -7, if not use last 
     // check boardState at index 0, 7, 14, 21, 28, 35. If any of these values !== null, index -7 make that space 1, or -1.
