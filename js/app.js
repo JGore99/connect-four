@@ -134,19 +134,28 @@ function turnCounter(){
 function findOpenSpace(targetColumn){
   console.log(targetColumn)
   let bottomColIndx = targetColumn + 35 //THIS!!!!
+  let bottomlessOne = targetColumn + 28 
+  let bottomlessTwo = targetColumn + 21
+  let bottomlessThree = targetColumn + 14
+  let bottomlessFour = targetColumn + 7
+
   if (boardState[bottomColIndx] === null){
     boardState[bottomColIndx] = playerTurn
-  } else {
-      console.log("playerTurn", playerTurn)
-      for(let i = targetColumn; i < 42; i += 7){
-        console.log("player turn in function", playerTurn)
-        let indexLessSeven = (i-7)
-        if (boardState[i] === null ){
-          boardState[indexLessSeven] = playerTurn
-        }
-      }
-    }
     console.log("board state", boardState)
+  } else if (boardState[bottomlessOne] === null){
+    boardState[bottomlessOne] = playerTurn
+    console.log("board state", boardState)
+  } else if (boardState[bottomlessTwo] === null){
+    boardState[bottomlessTwo] = playerTurn
+    console.log("board state", boardState)  
+  } else if (boardState[bottomlessThree] === null){
+    boardState[bottomlessThree] = playerTurn
+    console.log("board state", boardState)   
+  } else if (boardState[bottomlessFour] === null){
+    boardState[bottomlessFour] = playerTurn
+    console.log("board state", boardState) 
+  }
+  
     // if (boardState[i] !== null || boardState[i] === 1 || boardState[i] === -1) 
   // if column 0 for loop starting at 0 +7 check every state value for != null. 
   // if found, grab -7, if not use last 
