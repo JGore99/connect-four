@@ -6,15 +6,15 @@ const boardSquares = document.querySelectorAll(".square")
 const messageEl = document.getElementById("message")
 const redStatus = document.querySelector(".red-status")
 const resetBtn = document.querySelector(".reset")
-const turnEl = document.querySelector(".turn-title")
+
 /*----------------- Constants -----------------*/
-// const column0 = [topSquares[0], boardSquares[7], boardSquares[14], boardSquares[21], boardSquares[28], boardSquares[35]] 
-// const column1 = [topSquares[1], boardSquares[8], boardSquares[15], boardSquares[22], boardSquares[29], boardSquares[36]] 
-// const column2 = [topSquares[2], boardSquares[9], boardSquares[16], boardSquares[23], boardSquares[30], boardSquares[37]] 
-// const column3 = [topSquares[3], boardSquares[10], boardSquares[17], boardSquares[24], boardSquares[31], boardSquares[38]] 
-// const column4 = [topSquares[4], boardSquares[11], boardSquares[18], boardSquares[25], boardSquares[32], boardSquares[39]] 
-// const column5 = [topSquares[5], boardSquares[12], boardSquares[19], boardSquares[26], boardSquares[33], boardSquares[40]] 
-// const column6 = [topSquares[6], boardSquares[13], boardSquares[20], boardSquares[28], boardSquares[34], boardSquares[41]] 
+const column0 = [topSquares[0], boardSquares[7], boardSquares[14], boardSquares[21], boardSquares[28], boardSquares[35]] 
+const column1 = [topSquares[1], boardSquares[8], boardSquares[15], boardSquares[22], boardSquares[29], boardSquares[36]] 
+const column2 = [topSquares[2], boardSquares[9], boardSquares[16], boardSquares[23], boardSquares[30], boardSquares[37]] 
+const column3 = [topSquares[3], boardSquares[10], boardSquares[17], boardSquares[24], boardSquares[31], boardSquares[38]] 
+const column4 = [topSquares[4], boardSquares[11], boardSquares[18], boardSquares[25], boardSquares[32], boardSquares[39]] 
+const column5 = [topSquares[5], boardSquares[12], boardSquares[19], boardSquares[26], boardSquares[33], boardSquares[40]] 
+const column6 = [topSquares[6], boardSquares[13], boardSquares[20], boardSquares[28], boardSquares[34], boardSquares[41]] 
 
 
 /*------------- Variables (state) -------------*/
@@ -46,30 +46,32 @@ clearAll()
 // B. target id is used to update state array.
 
 function handleClick(e) {
-  // playerTurn = 1
+  
   if (e.target.classList.value !== "board") {
     console.log(e.target.classList)
     let targetColumn = parseInt(e.target.classList[1].slice(4))
     let targetId = parseInt(e.target.id);
     
-    if (isWinner === false) {
-      // playerTurn === 1 ? (boardState[targetId] = -1) : (boardState[targetId] = 1);
-      console.log("playerTurn before change", playerTurn)
-      findOpenSpace(targetColumn)
-      playerTurn = playerTurn * -1
-      console.log("playerTurn after change", playerTurn)
-      turnCounter()
-      playerTurn === 1 ? chipColor = "BLACK" : chipColor = "RED"
-    } else {
-      return
+    if(boardState[targetColumn] === null) {
+      if (isWinner === false) {
+        // playerTurn === 1 ? (boardState[targetId] = -1) : (boardState[targetId] = 1);
+        console.log("playerTurn before change", playerTurn)
+        findOpenSpace(targetColumn)
+        playerTurn = playerTurn * -1
+        console.log("playerTurn after change", playerTurn)
+        turnCounter()
+        playerTurn === 1 ? chipColor = "BLACK" : chipColor = "RED"
+      } else {
+        return
+      }
+      console.log("column", targetColumn)
+      console.log("space", targetId)
+      // console.log(boardState)
+      render(targetColumn)
+      determineWinner()
+      handleMessages()
     }
-    console.log("column", targetColumn)
-    console.log("space", targetId)
-    // console.log(boardState)
-    render(targetColumn)
-    determineWinner()
-    handleMessages()
-  }
+  }   
 }
 
 function clearAll() {
@@ -97,7 +99,6 @@ function clearAll() {
 }
 
 function render() {
-  console.log("bam")
   if(isWinner === false){
     boardSquares.forEach((square, idx) => {
       if (boardState[idx] === -1){
@@ -107,19 +108,6 @@ function render() {
       }
     })
   }
-  // if column x, check all children in said column for !== null.
-  // if found, use index of that spot - 1, change color of that spot
-  // if not found, change color of last spot in row.
-  // console.log("column", columnId)
-  // console.log(boardState)
-  // boardSquares.forEach((boardSquare, idx) => {
-  //   if (boardState[idx] === -1) {
-  //     boardSquare.innerText = "BL";
-  //   } else if (boardState[idx] === 1) {
-  //     boardSquare.innerText = "RD";
-  //   }
-  // })
-
 }
 
 function handleMessages() {
@@ -141,7 +129,7 @@ function handleMessages() {
 }
 
 function turnCounter(){
-  playerTurn === 1 ? blackTurnsRemaining -- : redTurnsRemaining --
+  playerTurn === -1 ? blackTurnsRemaining -- : redTurnsRemaining --
 }
 
 function findOpenSpace(targetColumn){
@@ -173,17 +161,13 @@ function findOpenSpace(targetColumn){
     console.log("board state", boardState) 
   }
   render()
-    // if (boardState[i] !== null || boardState[i] === 1 || boardState[i] === -1) 
-  // if column 0 for loop starting at 0 +7 check every state value for != null. 
-  // if found, grab -7, if not use last 
-    // check boardState at index 0, 7, 14, 21, 28, 35. If any of these values !== null, index -7 make that space 1, or -1.
-    // If not, make that index 1 or -1
-  
 }
 
 
 function determineWinner() {
-  
+  //for vertical 
+
+  // loop over each row, colum, diagonal seperately. adding the value of each chip of matching color / value. if the next chip is not of equal value or is null, the count is equal to the next chip, and contines going up until the run end, or the next chip is a different color.
 }
 
 // 1. A connect four board, a reset button, and the number of moves remaining for each side is visible.
