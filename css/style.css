@@ -18,8 +18,17 @@ html {
   font-size: 62.5%;
 }
 
-.body {
+body {
+  background: rgb(91, 139, 211);
   text-align: center;
+}
+
+.game-title {
+  font-family: "Paytone One", sans-serif;
+  font-size: 100px;
+  color: white;
+  text-shadow: 2px 2px 4px #000000;
+  margin: 10px auto;
 }
 
 .structure {
@@ -68,11 +77,11 @@ html {
   width: 60px;
 }
 .above-board:hover {
-  background-color: rgb(240, 165, 165);
+  background-color: rgb(194, 255, 245);
 }
 
 .legs {
-  background-color: blue;
+  background-color: rgb(134, 186, 247);
   border: 1px black solid;
 }
 
@@ -85,8 +94,16 @@ html {
   grid-row: 3 / 6;
 }
 
+#message {
+  color: yellow;
+  font-family: "Paytone One", sans-serif;
+  font-size: 30px;
+  margin: 10px auto;
+  text-shadow: 1px 1px 4px #000000;
+}
+
 .square {
-  background-color: white;
+  background-color: rgb(91, 139, 211);
   border: 1px solid black;
   border-radius: 50%;
   height: 55px;
@@ -95,13 +112,13 @@ html {
 }
 
 .reset {
-  background-color: blue;
+  background-color: rgb(134, 186, 247);
   grid-column: 3 / 4;
   grid-row: 4 / 5;
   height: 20px;
   align-self: flex-end;
   justify-self: center;
-  width: 100px;
+  width: 80%;
 }
 
 .red {
@@ -111,4 +128,24 @@ html {
 
 .black {
   background-color: black;
+}
+
+.status-section {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 50%, 50%;
+}
+
+.status-section > p {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  font-weight: 200;
+}
+
+.red-status {
+  color: rgb(167, 0, 0);
+}
+
+black-status {
+  color: black;
 }
