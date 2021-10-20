@@ -1,5 +1,6 @@
 html {
   box-sizing: border-box;
+  height: 100%;
 }
 
 /* The Universal Selector */
@@ -19,16 +20,23 @@ html {
 }
 
 body {
-  background: rgb(91, 139, 211);
+  background: rgb(108, 162, 242);
+  background: linear-gradient(
+    0deg,
+    rgb(87, 133, 201) 0%,
+    rgb(70, 110, 170) 100%
+  );
+  background-size: cover;
+  background-repeat: no-repeat;
   text-align: center;
 }
 
 .game-title {
   font-family: "Paytone One", sans-serif;
-  font-size: 100px;
+  font-size: 90px;
   color: white;
   text-shadow: 2px 2px 4px #000000;
-  margin: 10px auto;
+  margin: 10px auto 5px;
 }
 
 .structure {
@@ -38,7 +46,7 @@ body {
   grid-template-columns: 5px 20px 1fr 20px 5px;
   /* 9 columns leg, 7 eq, leg */
   grid-template-rows: 60px repeat(2, 1fr) 20px 100px;
-  margin: 10px auto;
+  margin: 5px auto;
   width: 700px;
 }
 
@@ -61,6 +69,7 @@ body {
   grid-row: 2 / 5;
   position: relative;
   z-index: -1;
+  box-shadow: 0px 1px 2px #000000;
 }
 
 /* .column {
@@ -77,18 +86,21 @@ body {
   width: 60px;
 }
 .above-board:hover {
-  background-color: rgb(194, 255, 245);
+  background-color: rgb(206, 206, 206);
 }
 
 .legs {
   background-color: rgb(134, 186, 247);
+  box-shadow: 0px 1px 2px #000000;
   border: 1px black solid;
+  border-radius: 5px;
 }
 
 .legL {
   grid-column: 1 / 3;
   grid-row: 3 / 6;
 }
+
 .legR {
   grid-column: 4 / 6;
   grid-row: 3 / 6;
@@ -98,7 +110,7 @@ body {
   color: yellow;
   font-family: "Paytone One", sans-serif;
   font-size: 30px;
-  margin: 10px auto;
+  margin: 10px auto 5px;
   text-shadow: 1px 1px 4px #000000;
 }
 
@@ -109,10 +121,13 @@ body {
   height: 55px;
   margin: 0px auto;
   width: 55px;
+  box-shadow: 1px 2px 5px #000000;
 }
 
 .reset {
   background-color: rgb(134, 186, 247);
+  border-radius: 5px;
+  font-size: 10px;
   grid-column: 3 / 4;
   grid-row: 4 / 5;
   height: 20px;
@@ -132,20 +147,19 @@ body {
 
 .status-section {
   display: grid;
+  justify-content: center;
+  height: auto;
   grid-auto-flow: column;
   grid-template-columns: 50%, 50%;
+  
 }
 
 .status-section > p {
+  color: white;
+  margin: 5px 30px 0px;
+  text-emphasis-color: rgb(0, 0, 0);
+  text-shadow: 2px 2px 4px rgb(0, 0, 0);
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 15px;
-  font-weight: 200;
-}
-
-.red-status {
-  color: rgb(167, 0, 0);
-}
-
-black-status {
-  color: black;
+  font-size: 23px;
+  font-weight: 700;
 }

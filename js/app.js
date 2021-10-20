@@ -158,6 +158,8 @@ function clearAll() {
     boardSquare.classList.remove("red", "black")
   })
 
+  messageEl.classList.remove('animate__animated', 'animate__bounce')
+
   handleMessages()
   render()
 }
@@ -186,8 +188,12 @@ function handleMessages() {
   }
   messageEl.innerText = gameMessage
 
-  blackStatus.innerText = `BLACK has ${blackTurnsRemaining} of turns remaining`
-  redStatus.innerText = `RED has ${redTurnsRemaining} of turns remaining`
+  blackStatus.innerText = `BLACK \nhas ${blackTurnsRemaining} of turns remaining`
+  redStatus.innerText = `RED \nhas ${redTurnsRemaining} of turns remaining`
+
+  if (isWinner === 1 || isWinner === -1){
+    messageEl.classList.add('animate__animated', 'animate__bounce')
+  } 
 
   render()
 }
@@ -229,6 +235,10 @@ function determineWinner() {
       isWinner = (playerTurn * -1)
     }
   })
+  if(redTurnsRemaining === 0 && blackTurnsRemaining === 0 && isWinner === false){
+    isWinner = "Tie"
+  }
+
   render()
 }
 
