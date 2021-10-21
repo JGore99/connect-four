@@ -33,10 +33,10 @@ body {
 
 .game-title {
   font-family: "Paytone One", sans-serif;
-  font-size: 90px;
+  font-size: 87px;
   color: white;
   text-shadow: 2px 2px 4px #000000;
-  margin: 10px auto 5px;
+  margin: 5px auto 0px;
 }
 
 .structure {
@@ -109,8 +109,8 @@ body {
 #message {
   color: yellow;
   font-family: "Paytone One", sans-serif;
-  font-size: 30px;
-  margin: 10px auto 5px;
+  font-size: 28px;
+  margin: 5px auto 5px;
   text-shadow: 1px 1px 4px #000000;
 }
 
@@ -155,7 +155,7 @@ body {
 
 .status-section > p {
   color: white;
-  margin: 5px 50px 0px;
+  margin: 0px 50px 0px;
   text-emphasis-color: rgb(0, 0, 0);
   text-shadow: 2px 2px 4px rgb(0, 0, 0);
   font-family: Arial, Helvetica, sans-serif;
