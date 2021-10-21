@@ -37,7 +37,7 @@ There are two main reasons why I chose to build this game specifically.
 
 ## Actual Game:
 
-![actual game](https://i.imgur.com/RcYkiuq.png "Connect Four Actual Game")
+![actual game](https://i.imgur.com/dBUR6uF.png "Connect Four Actual Game")
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>
