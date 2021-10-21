@@ -1,25 +1,25 @@
 # **Connect Four** 
 
-## Description - 
+## Description:
 
 Connect Four is a two player, turned based game, played on a grid that stands vertically between players. Each player takes a turn dropping their colored chips to the lowest point in columns of the grid. The first player to build a series of four chips in a row, on a horizontal, vertical, or diagonal axis wins.
 
 <p>&nbsp;</p>
 
-## Objective -
+## Objective:
 
 To create a browser based game that accurately imitates the board game Connect Four as it was when I was a kid. 
 
 <p>&nbsp;</p>
 
-## Link to Game -
+## Link to Game:
 
 To play the game, 
 [click here.](https://jgore99.github.io/connect-four/)
 
 <p>&nbsp;</p>
 
-## Motivation -
+## Motivation:
 There are two main reasons why I chose to build this game specifically. 
 - First: I wanted to build on the concepts we learned when we built Tic Tac Toe.
   
@@ -27,7 +27,7 @@ There are two main reasons why I chose to build this game specifically.
 
 <p>&nbsp;</p>
 
-## Concept Sketch
+## Concept Sketch:
 
 
 ![concept sketch](https://i.imgur.com/Rc6RIsa.jpg "Connect Four Concept Sketch")
@@ -35,14 +35,14 @@ There are two main reasons why I chose to build this game specifically.
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 
-## Actual Game
+## Actual Game:
 
 ![actual game](https://i.imgur.com/RcYkiuq.png "Connect Four Actual Game")
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 
-## Minimum Viable Product -
+## Minimum Viable Product:
 
 1. A connect four board, a reset button, and the number of moves remaining for each side.
    
@@ -75,7 +75,7 @@ There are two main reasons why I chose to build this game specifically.
 
 <p>&nbsp;</p>
 
-## Stretch Goals -
+## Stretch Goals:
 
 - Page loads with a large play / start button. Clicking it displays board described in Step 1
   
@@ -93,6 +93,6 @@ There are two main reasons why I chose to build this game specifically.
 
 <p>&nbsp;</p>
 
-## Hindsight Perspective -
+## Hindsight Perspective:
 
 Building the state array as a single array presented challenges that could have been avoided if a two dimensional array had been used instead.
