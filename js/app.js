@@ -188,8 +188,8 @@ function handleMessages() {
   }
   messageEl.innerText = gameMessage
 
-  blackStatus.innerText = `BLACK \nhas ${blackTurnsRemaining} of turns remaining`
-  redStatus.innerText = `RED \nhas ${redTurnsRemaining} of turns remaining`
+  blackStatus.innerText = `BLACK \nhas ${blackTurnsRemaining} turns remaining`
+  redStatus.innerText = `RED \nhas ${redTurnsRemaining} turns remaining`
 
   if (isWinner === 1 || isWinner === -1){
     messageEl.classList.add('animate__animated', 'animate__bounce')
