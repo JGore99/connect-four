@@ -111,7 +111,7 @@ function handleClick(e) {
   
   if (e.target.classList.value !== "board") {
     let targetColumn = parseInt(e.target.classList[1].slice(4))
-   
+
     
     if(boardState[targetColumn] === null) {
       if (isWinner === false) {

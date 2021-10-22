@@ -40,18 +40,15 @@ body {
 }
 
 .structure {
-  /* border: 1px solid black; */
   display: grid;
   height: 600px;
   grid-template-columns: 5px 20px 1fr 20px 5px;
-  /* 9 columns leg, 7 eq, leg */
   grid-template-rows: 60px repeat(2, 1fr) 20px 100px;
   margin: 5px auto;
   width: 700px;
 }
 
 .board {
-  /* border: 1px red solid; */
   display: grid;
   grid-column: 3 / 4;
   grid-row: 1 / 4;
