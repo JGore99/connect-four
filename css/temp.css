@@ -35,30 +35,23 @@ body {
   min-height: 100vh;
   position: relative;
   width: 100%;
-  --font-xl: 15rem;
-  --font-l: 7rem;
-  --font-m: 4rem;
-  --font-s: 2rem;
-  --text-color-main: white;
-  --game-board-space: 82px;
 }
 
 .game-title {
   font-family: "Paytone One", sans-serif;
-  font-size: var(--font-xl);
-  color: var(--text-color-main);
-  line-height: 15rem;
-  text-shadow: 2px 3px 4px #000000;
-  margin: 25px auto 12px;
+  font-size: 8rem;
+  color: white;
+  text-shadow: 2px 2px 4px #000000;
+  margin: 5px auto 0px;
 }
 
 .structure {
   display: grid;
-  height: 810px;
-  grid-template-columns: 8px 20px 1fr 20px 8px;
+  height: 600px;
+  grid-template-columns: 5px 20px 1fr 20px 5px;
   grid-template-rows: 60px repeat(2, 1fr) 20px 100px;
   margin: 5px auto;
-  width: 98%;
+  width: 700px;
 }
 
 .board {
@@ -69,7 +62,6 @@ body {
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(7, 1fr);
   justify-self: stretch;
-  padding-bottom: 18px;
 }
 
 .psuedo-board {
@@ -114,8 +106,8 @@ body {
 #message {
   color: yellow;
   font-family: "Paytone One", sans-serif;
-  font-size: var(--font-l);
-  margin: 25px auto 5px;
+  font-size: 28px;
+  margin: 5px auto 5px;
   text-shadow: 1px 1px 4px #000000;
 }
 
@@ -123,19 +115,19 @@ body {
   background-color: rgb(78, 121, 185);
   border: 1px solid black;
   border-radius: 50%;
-  height: var(--game-board-space);
-  margin: 9px auto;
-  width: var(--game-board-space);
+  height: 55px;
+  margin: 0px auto;
+  width: 55px;
   box-shadow: 0px -2px 2px #000000;
 }
 
 .reset {
   background-color: rgb(134, 186, 247);
   border-radius: 5px;
-  font-size: var(--font-s);
+  font-size: 10px;
   grid-column: 3 / 4;
   grid-row: 4 / 5;
-  height: 25px;
+  height: 20px;
   align-self: flex-end;
   justify-self: center;
   width: 80%;
@@ -156,14 +148,22 @@ body {
   height: auto;
   grid-auto-flow: column;
   grid-template-columns: 50%, 50%;
-  margin-top: 5rem;
 }
 
 .status-section > p {
   color: white;
   margin: 0px 50px 0px;
+  text-emphasis-color: rgb(0, 0, 0);
   text-shadow: 2px 2px 4px rgb(0, 0, 0);
   font-family: Arial, Helvetica, sans-serif;
-  font-size: var(--font-m);
+  font-size: 23px;
   font-weight: 700;
+}
+
+@media only screen and (max-device-width: 480px){
+
+  .game-title {
+    font-size: 15rem;
+  }
+
 }
