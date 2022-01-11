@@ -23,11 +23,14 @@ body {
   margin: 0;
   padding: 0;
   background: rgb(108, 162, 242);
-  background: linear-gradient(
+  /* background: radial-gradient(
     180deg,
     rgb(87, 133, 201) 40%,
-    rgb(70, 110, 170) 80%
-  );
+    rgb(44, 72, 116) 80%
+  ); */
+
+  background: radial-gradient(rgb(87, 133, 201) 50%,
+rgb(59, 98, 160) 90%);
   /* background-size: cover;
   background-repeat: no-repeat; */
   height: 100vh;
@@ -40,7 +43,7 @@ body {
   --font-xl3: 3.7rem;
   --font-m: 2.6rem;
   --font-m2: 2.2rem;
-  --font-m3: 1.8rem;
+  --font-m3: 1.9rem;
   --font-s: .9rem;
   --font-s2: .6rem;
   --font-s3: .5rem;
@@ -126,7 +129,7 @@ body {
 }
 
 .square {
-  background-color: rgb(78, 121, 185);
+  background-color: rgb(84, 127, 192);
   border: 1px solid black;
   border-radius: 50%;
   height: var(--game-space-l);
@@ -167,10 +170,11 @@ body {
   color: white;
   margin: 0px 50px 0px;
   text-emphasis-color: rgb(0, 0, 0);
-  text-shadow: 2px 2px 4px rgb(0, 0, 0);
+  text-shadow: 3px 2px 4px rgb(0, 0, 0);
   font-family: Arial, Helvetica, sans-serif;
   font-size: var(--font-m);
   font-weight: 700;
+  
 }
 
 @media only screen and (max-width: 700px) {
@@ -222,7 +226,7 @@ body {
   }
   
   .square {
-    background-color: rgb(78, 121, 185);
+    /* background-color: rgb(78, 121, 185); */
     border: 1px solid black;
     border-radius: 50%;
     height: var(--game-space-m);
@@ -320,13 +324,12 @@ body {
   }
 
   .square {
-    background-color: rgb(78, 121, 185);
     border: 1px solid black;
-    border-radius: 50%;
     height: var(--game-space-s);
-    margin: 0px auto;
+    /* margin: 0px auto; */
     width: var(--game-space-s);
-    box-shadow: 0px -2px 2px #000000;
+    box-shadow: 0px -1px 2px #000000;
+    
   }
 
   .red {
@@ -356,7 +359,8 @@ body {
   .status-section > p {
     font-size: var(--font-m3);
     font-weight: 500;
-    margin: 8px 10px 0px;
+    margin: 8px 20px 0px;
     line-height: 2rem;
+    text-shadow: 2px 2px 3px #000000;
   }
 }
