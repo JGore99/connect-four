@@ -320,7 +320,7 @@ rgb(59, 98, 160) 90%);
   }
   
   .above-board:hover {
-    background-color: none;
+    background-color: transparent;
   }
 
   .square {
