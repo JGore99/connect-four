@@ -1,6 +1,5 @@
 html {
   box-sizing: border-box;
-  height: 100%;
 }
 
 /* The Universal Selector */
@@ -20,17 +19,18 @@ html {
 }
 
 body {
+  margin: 0;
+  padding: 0;
   background: rgb(108, 162, 242);
   background: linear-gradient(
     180deg,
     rgb(87, 133, 201) 40%,
     rgb(70, 110, 170) 80%
   );
-  background-size: cover;
-  background-repeat: no-repeat;
+  /* background-size: cover;
+  background-repeat: no-repeat; */
+  height: 100vh;
   text-align: center;
-  margin: 0;
-  padding: 0;
 }
 
 .game-title {
@@ -57,7 +57,7 @@ body {
   grid-auto-flow: row;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(7, 1fr);
-  justify-self: stretch;
+  /* justify-self: stretch; */
 }
 
 .psuedo-board {
