@@ -1,5 +1,6 @@
 html {
   box-sizing: border-box;
+  
 }
 
 /* The Universal Selector */
@@ -22,20 +23,38 @@ body {
   margin: 0;
   padding: 0;
   background: rgb(108, 162, 242);
-  background: linear-gradient(
+  /* background: radial-gradient(
     180deg,
     rgb(87, 133, 201) 40%,
-    rgb(70, 110, 170) 80%
-  );
+    rgb(44, 72, 116) 80%
+  ); */
+
+  background: radial-gradient(rgb(87, 133, 201) 50%,
+rgb(59, 98, 160) 90%);
   /* background-size: cover;
   background-repeat: no-repeat; */
   height: 100vh;
   text-align: center;
+  --font-xxl: 8rem;
+  --font-xxl2: 7.0rem;
+  --font-xxl3: 5.3rem;
+  --font-xl: 4rem;
+  --font-xl2: 3.5rem;
+  --font-xl3: 3.7rem;
+  --font-m: 2.6rem;
+  --font-m2: 2.2rem;
+  --font-m3: 1.9rem;
+  --font-s: .9rem;
+  --font-s2: .6rem;
+  --font-s3: .5rem;
+  --game-space-l: 60px;
+  --game-space-m: 48px;
+  --game-space-s: 30px;
 }
 
 .game-title {
   font-family: "Paytone One", sans-serif;
-  font-size: 8rem;
+  font-size: var(--font-xxl);
   color: white;
   text-shadow: 2px 2px 4px #000000;
   margin: 5px auto 0px;
@@ -43,11 +62,11 @@ body {
 
 .structure {
   display: grid;
-  height: 600px;
+  height: 590px;
   grid-template-columns: 5px 20px 1fr 20px 5px;
-  grid-template-rows: 60px repeat(2, 1fr) 20px 100px;
-  margin: 5px auto;
-  width: 700px;
+  grid-template-rows: 60px repeat(2, 1fr) 20px 90px;
+  margin: 0px auto;
+  width: 650px;
 }
 
 .board {
@@ -57,6 +76,7 @@ body {
   grid-auto-flow: row;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(7, 1fr);
+  align-items: center;
   /* justify-self: stretch; */
 }
 
@@ -73,9 +93,10 @@ body {
 
 .above-board {
   border-radius: 50px;
-  height: 60px;
+  align-self: start;
+  height: var(--game-space-l);
   margin: 0px auto;
-  width: 60px;
+  width: var(--game-space-l);
 }
 
 .above-board:hover {
@@ -102,18 +123,18 @@ body {
 #message {
   color: yellow;
   font-family: "Paytone One", sans-serif;
-  font-size: 28px;
+  font-size: var(--font-xl);
   margin: 5px auto 5px;
   text-shadow: 1px 1px 4px #000000;
 }
 
 .square {
-  background-color: rgb(78, 121, 185);
+  background-color: rgb(84, 127, 192);
   border: 1px solid black;
   border-radius: 50%;
-  height: 55px;
+  height: var(--game-space-l);
   margin: 0px auto;
-  width: 55px;
+  width: var(--game-space-l);
   box-shadow: 0px -2px 2px #000000;
 }
 
@@ -131,7 +152,6 @@ body {
 
 .red {
   background-color: red;
-  color: red;
 }
 
 .black {
@@ -150,8 +170,197 @@ body {
   color: white;
   margin: 0px 50px 0px;
   text-emphasis-color: rgb(0, 0, 0);
-  text-shadow: 2px 2px 4px rgb(0, 0, 0);
+  text-shadow: 3px 2px 4px rgb(0, 0, 0);
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 23px;
+  font-size: var(--font-m);
   font-weight: 700;
+  
+}
+
+@media only screen and (max-width: 700px) {
+  
+  .game-title {
+    font-size: var(--font-xxl2);
+    line-height: 7rem;
+    letter-spacing: .1rem;
+    padding: 2rem 2rem 1rem;
+  }
+  
+  .structure {
+    height: 470px;
+    grid-template-columns: 5px 15px 1fr 15px 5px;
+    grid-template-rows: 50px repeat(2, 1fr) 12px 55px;
+    margin: 0px auto;
+    width: 500px;
+  }
+  
+  .board {
+    display: grid;
+    grid-column: 3 / 4;
+    grid-row: 1 / 4;
+    grid-auto-flow: row;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(7, 1fr);
+    align-items: center;
+    margin-bottom: 5px;
+    /* justify-self: stretch; */
+  }
+  
+  .psuedo-board {
+    background-color: yellow;
+    border: 1px black solid;
+    border-radius: 8px;
+    grid-column: 2 / 5;
+    grid-row: 2 / 5;
+    position: relative;
+    z-index: -1;
+    box-shadow: 0px 1px 2px #000000;
+  }
+  
+  .above-board {
+    align-self: center;
+    border-radius: 50px;
+    height: var(--game-space-m);
+    margin: 0px auto 2px;
+    width: var(--game-space-m);
+  }
+  
+  .square {
+    /* background-color: rgb(78, 121, 185); */
+    border: 1px solid black;
+    border-radius: 50%;
+    height: var(--game-space-m);
+    margin: 0px auto;
+    width: var(--game-space-m);
+    box-shadow: 0px -2px 2px #000000;
+  }
+
+  .red {
+    background-color: red;
+  }
+  
+  .black {
+    background-color: black;
+  }
+
+  .reset {
+    border-radius: 3px;
+    height: 15px;
+    font-size: var(--font-s);
+    line-height: 0rem;
+  }
+
+  .legs {
+    border-radius: 3px;
+  }
+
+  #message {
+    font-size: var(--font-xl2);
+    margin: 2px auto 2px;
+  }
+
+  .status-section > p {
+    font-size: var(--font-m2);
+    font-weight: 600;
+    margin: 20px 20px 0px;
+  }
+}
+
+@media only screen and (max-width: 530px) {
+  
+  body {
+    min-width: 320px;
+    max-height: 100vh;
+  }
+
+  .game-title {
+    font-size: var(--font-xxl3);
+    line-height: 5rem;
+    letter-spacing: .1rem;
+    padding: 1rem 2rem 1rem;
+  }
+  
+  .structure {
+    height: 310px;
+    grid-template-columns: 4px 8px 1fr 8px 4px;
+    grid-template-rows: 30px repeat(2, 1fr) 12px 45px;
+    margin: 0px auto;
+    width: 310px;
+  }
+  
+  .board {
+    display: grid;
+    grid-column: 3 / 4;
+    grid-row: 1 / 4;
+    grid-auto-flow: row;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(7, 1fr);
+    align-items: center;
+    margin-bottom: 5px;
+    /* justify-self: stretch; */
+  }
+  
+  .psuedo-board {
+    background-color: yellow;
+    border: 1px black solid;
+    border-radius: 8px;
+    grid-column: 2 / 5;
+    grid-row: 2 / 5;
+    position: relative;
+    z-index: -1;
+    box-shadow: 0px 1px 2px #000000;
+  }
+  
+  .above-board {
+    align-self: center;
+    border-radius: 50px;
+    height: var(--game-space-s);
+    margin: 0px auto;
+    width: var(--game-space-s);
+  }
+  
+  .above-board:hover {
+    background-color: none;
+  }
+
+  .square {
+    border: 1px solid black;
+    height: var(--game-space-s);
+    /* margin: 0px auto; */
+    width: var(--game-space-s);
+    box-shadow: 0px -1px 2px #000000;
+    
+  }
+
+  .red {
+    background-color: red;
+  }
+  
+  .black {
+    background-color: black;
+  }
+
+  .reset {
+    border-radius: 3px;
+    height: 15px;
+    font-size: var(--font-s);
+    line-height: 0rem;
+  }
+
+  .legs {
+    border-radius: 3px;
+  }
+
+  #message {
+    font-size: var(--font-m3);
+    margin: 2px auto 2px;
+  }
+
+  .status-section > p {
+    font-size: var(--font-m3);
+    font-weight: 500;
+    margin: 8px 20px 0px;
+    line-height: 2rem;
+    text-shadow: 2px 2px 3px #000000;
+  }
 }

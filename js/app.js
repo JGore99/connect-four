@@ -8,6 +8,11 @@ const messageEl = document.getElementById("message")
 const redStatus = document.querySelector(".red-status")
 const resetBtn = document.querySelector(".reset")
 
+
+/*------------- Constants -------------*/
+const chipClick = new Audio('../audio/click.mp3')
+chipClick.volume = 0.3
+
 /*------------- Variables (state) -------------*/
 
 let playerTurn = 1
@@ -112,7 +117,6 @@ function handleClick(e) {
   if (e.target.classList.value !== "board") {
     let targetColumn = parseInt(e.target.classList[1].slice(4))
 
-    
     if(boardState[targetColumn] === null) {
       if (isWinner === false) {
         findOpenSpace(targetColumn)
@@ -123,6 +127,7 @@ function handleClick(e) {
         return
       }
       render()
+      chipClick.play()
       determineWinner()
       handleMessages()
     }
@@ -218,6 +223,17 @@ function findOpenSpace(targetColumn){
   render()
 }
 
+// function changeHoverColor(targetColumn){
+//   let targetHoverSpace = targetColumn - 1
+//   console.log('target', targetHoverSpace)
+//   if (playerTurn === 1){
+//     above-board.classList.add("black")
+//   } else if (playerTurn === 1) {
+//     above-board.classList.add("red")
+//   } else {
+
+//   }
+// }
 
 function determineWinner() {
   
